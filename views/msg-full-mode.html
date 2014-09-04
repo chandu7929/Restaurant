@@ -1,0 +1,38 @@
+    <div class="notificationmsg error" ng-if="errormsg">{{errormsg}}</div>
+    <div class="notificationmsg success" ng-if="successmsg">{{successmsg}}</div>
+	<div class="loadingBar" ng-if="loading"><img src="img/extra/loadingBar.gif"></div>  
+    <div id="order-detail" class="nopbox"><div class="inner" ng-if="message">
+		<div><strong>{{message.field_subject}}</strong>
+            <span class="posted-date" am-time-ago="message.created * 1000">
+                {{message.created *1000 | date:'mediumDate'}}
+			</span>
+		</div>
+        <div ng-if="message.uid == userid && message.field_to.target_id == userid"><strong>Me</strong> to Me</div>
+        <div ng-if="message.uid == userid && message.field_to.target_id != userid"><strong>Me</strong> to 
+           	{{setUserName(message.field_to.target_id)}}
+		</div>
+        <div ng-if="message.field_to.target_id == userid && message.uid != userid"><strong>{{setUserName(message.uid)}} to</strong>Me</div>
+        <div> {{message.field_message}}</div>
+        <div ng-show=message.field_attachment><a ng-href="http://imtrade.gocatalyze.com/sites/imtrade.gocatalyze.com/files/{{message.field_attachment.filename}}">
+            <img alt="{{message.field_attachment.filename}}"height="100px" width="100px" src="http://imtrade.gocatalyze.com/sites/imtrade.gocatalyze.com/files/{{message.field_attachment.filename}}">{{message.field_attachment.filename}}</a>
+            <img alt="{{message.field_attachment.filename}}" src="img/icons/atch.gif">
+		</div><hr/>
+		
+		<div ng-repeat="thread in threadMsg">
+            <div><span class="posted-date" am-time-ago="thread.created * 1000">
+                  {{thread.created *1000 | date:'mediumDate'}}</span>
+			</div>
+            <div ng-if="thread.uid == userid && thread.field_to.target_id == userid"><strong>Me</strong> to Me</div>
+            <div ng-if="thread.uid == userid && thread.field_to.target_id != userid"><strong>Me</strong> to {{setUserName(thread.field_to.target_id)}}</div>
+            <div ng-if="thread.field_to.target_id == userid && thread.uid != userid"><strong>{{setUserName(thread.uid)}}</strong> to Me</div>
+            <div> {{thread.field_message}}</div>
+            <div ng-show=thread.field_attachment>
+                <a ng-href="http://imtrade.gocatalyze.com/sites/imtrade.gocatalyze.com/files/{{thread.field_attachment.filename}}">
+                <img alt="{{thread.field_attachment.filename}}" height="100px" width="100px" src="http://imtrade.gocatalyze.com/sites/imtrade.gocatalyze.com/files/{{thread.field_attachment.filename}}">{{thread.field_attachment.filename}}{{thread.field_attachment.filename}}</a>
+                <img alt="{{thread.field_attachment.filename}}" src="img/icons/atch.gif">
+			</div><hr/> 		                 
+        </div>
+        <div class="loadingBar" ng-if="loading1"><img src="img/extra/loadingBar.gif"></div>
+		<div class="add-order-button"><a ng-click="enquiryReply()" class="button">Reply</a></div>
+        <div ng-include src="'views/send-enquiry-reply.html'" ng-if="isReply"></div>
+    </div></div>

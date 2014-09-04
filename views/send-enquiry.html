@@ -1,0 +1,31 @@
+ <div id="enquiries-container" ng-if="isLogin">
+    <h2 class="title">Enquiry</h2>
+    <div class="notificationmsg error" ng-if="errormsg">{{errormsg}}</div>
+	<div class="notificationmsg success" ng-if="successmsg">{{successmsg}}</div>
+	<div class="loadingBar" ng-if="loading1"><img src="img/extra/loadingBar.gif"></div>
+	<form name="send-enquiry" ng-submit="enquiries(enquiredata)" novalidate>
+		<div class="enquiries-content">
+			<div class="form-item form-type-textfield">
+				<label>To</label>
+				<select id="edit-towhom" name="towhom" class="form-select" ng-model="enquiredata.towhom">        
+					<option value="{{value.uid}}"  ng-repeat="value in getToWhom()">
+					{{value.field_first_name}} {{value.field_last_name}}</option>
+				</select>
+				<label>Subject</label>
+				<input tabindex="1" type="text" name="subject" id="edit-subject" class="form-text" ng-model="enquiredata.sub">
+			</div>
+			<div class="form-item form-type-textarea">
+				<label>Attachment</label>
+				<input type="file" ng-file-select="onFileSelect($files)">
+			</div>
+			<div class="form-item form-type-textarea">
+				<label>Message</label>
+				<textarea id="edit-submitted-message" name="submitted[message]" cols="60" rows="5" class="form-textarea" ng-model="enquiredata.body"></textarea>
+			</div>
+			<div class="form-item form-type-submit">
+				<input tabindex="1" id="edit-enquiries" name="send_password" value="Send Enquiry" class="form-submit" type="submit">
+			</div>
+
+      </div><!--- end /.enquiries-content --->
+    </form>
+ </div><!--- end /#enquiries-container --->

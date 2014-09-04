@@ -1,0 +1,18 @@
+            <div class="add-order-button"><a href="#/order-details/{{orderId}}" ng-click="openNeworderTemplate()" class="button">ADD ORDER</a></div>
+            <div ng-include src="'views/recent-orders.html'"></div>
+            <div id="order-detail" class="nopbox"><div class="inner">
+              <h2 class="title">Order Detail</h2>
+			  <div class="loadingBar" ng-if="loading"><img src="img/extra/loadingBar.gif"></div> 
+              <div class="teaser" ng-repeat="value in items">
+                <div class="nopimg order-img"></div>
+                <div class="description">
+                  <p>{{value.field_item_name}}</p>
+                  <div class="qty-unit"><span class="qty">Qty: <strong>{{value.field_quantity}}</strong></span>	  
+				  <span class="unit" ng-switch="value.field_units">Unit: 
+					<strong ng-switch-when="1">Kg</strong>
+					<strong ng-switch-when="2">Mtr</strong>
+					<strong ng-switch-when="3">Ltr</strong>
+				  </span>
+                </div>
+              </div>
+            </div></div>

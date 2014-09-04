@@ -1,0 +1,14 @@
+  <div ng-if="isLogin" id="recent-news" class="nopbox"><div class="inner">
+  <h2 class="title">Recent Posts</h2>
+  <div ng-if="errormsg" class="notificationmsg error">{{errormsg}}</div>
+  <div class="loadingBar" ng-if="loading"><img src="img/extra/loadingBar.gif"></div>
+  <div ng-repeat="value in recentPost">
+    <div class="teaser" ng-if="value.type == 'article'">
+      <div class="nopimg user-img"></div>
+      <div class="description">
+        <p>{{value.title}}</p>
+        <div class="posted-date" am-time-ago="value.created * 1000"></div>
+        </div>
+      </div>
+  </div>
+  </div>

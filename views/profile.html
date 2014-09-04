@@ -1,0 +1,26 @@
+    <div id="profile-container" ng-if="isLogin">
+
+      <h2 class="title">Your Profile</h2>
+      <div class="profile-content">
+        <div class="form-item">
+          <label>First Name</label>
+          <p>{{userProfile.field_first_name}}</p>
+        </div>
+        <div class="form-item">
+          <label>Last Name</label>
+          <p>{{userProfile.field_last_name}}</p>
+        </div>
+        <div class="form-item">
+          <label>Email</label>
+          <p>{{userProfile.field_email}}</p>
+        </div>
+        <div class="form-item">
+          <label>Phone/Mobile</label>
+          <p>{{userProfile.field_phone_mobile.number}}</p>
+        </div>
+        <div>
+          <input type="button"  value='Edit' ng-click="editProfile()">
+        </div>
+      </div><!--- end /.profile-content --->
+
+    </div><!--- end /#profile-container --->
